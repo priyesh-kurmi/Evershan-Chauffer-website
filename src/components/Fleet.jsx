@@ -199,30 +199,35 @@ export default function Fleet() {
           </div>
 
           {/* Thumbnail Navigation */}
-          <div className="flex justify-center gap-2 sm:gap-4 mt-6 sm:mt-8 px-4">
-            {fleet.map((car, index) => (
-              <Link
-                key={index}
-                to={car.link}
-                onClick={(e) => {
-                  e.preventDefault()
-                  setCurrentIndex(index)
-                }}
-                className={`relative w-16 h-12 sm:w-24 sm:h-16 rounded-lg overflow-hidden transition-all duration-300 ${
-                  index === currentIndex 
-                    ? 'ring-2 sm:ring-4 ring-black scale-105' 
-                    : 'ring-1 sm:ring-2 ring-gray-300 hover:ring-gray-400 opacity-70 hover:opacity-100'
-                }`}
-                aria-label={`View ${car.name}`}
-              >
-                <OptimizedImage
-                  src={car.image}
-                  alt={car.name}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </Link>
-            ))}
+          <div className="mt-6 sm:mt-8">
+            <p className="text-center text-gray-500 text-base sm:text-lg font-medium mb-3 sm:mb-4">
+              CHOOSE YOUR CAR
+            </p>
+            <div className="flex justify-center gap-2 sm:gap-4 px-4">
+              {fleet.map((car, index) => (
+                <Link
+                  key={index}
+                  to={car.link}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    setCurrentIndex(index)
+                  }}
+                  className={`relative w-16 h-12 sm:w-24 sm:h-16 rounded-lg overflow-hidden transition-all duration-300 ${
+                    index === currentIndex 
+                      ? 'ring-2 sm:ring-4 ring-black scale-105' 
+                      : 'ring-1 sm:ring-2 ring-gray-300 hover:ring-gray-400 opacity-70 hover:opacity-100'
+                  }`}
+                  aria-label={`View ${car.name}`}
+                >
+                  <OptimizedImage
+                    src={car.image}
+                    alt={car.name}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </Link>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>
