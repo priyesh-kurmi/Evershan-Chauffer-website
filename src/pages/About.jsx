@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import OptimizedImage from '../components/OptimizedImage'
 
 export default function About() {
   return (
@@ -54,12 +55,11 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <img
+              <OptimizedImage
                 src={`${import.meta.env.BASE_URL}images/about1.png`}
                 alt="Professional chauffeur"
                 className="w-full h-auto rounded-lg shadow-2xl"
                 loading="lazy"
-                decoding="async"
               />
             </motion.div>
           </div>
@@ -72,12 +72,11 @@ export default function About() {
               transition={{ duration: 0.8 }}
               className="order-2 lg:order-1"
             >
-              <img
+              <OptimizedImage
                 src={`${import.meta.env.BASE_URL}images/about2.png`}
                 alt="Luxury fleet"
                 className="w-full h-auto rounded-lg shadow-2xl"
                 loading="lazy"
-                decoding="async"
               />
             </motion.div>
 

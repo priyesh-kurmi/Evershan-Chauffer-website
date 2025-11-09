@@ -77,25 +77,25 @@ export default function Contact() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -50 }}
             transition={{ duration: 0.3 }}
-            className="fixed top-24 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-md px-4"
+            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-[90%] sm:w-full max-w-md px-4"
           >
-            <div className={`rounded-lg shadow-2xl p-6 flex items-start gap-4 ${
+            <div className={`rounded-lg shadow-2xl p-4 sm:p-6 flex items-start gap-3 sm:gap-4 ${
               submitStatus === 'success' 
                 ? 'bg-green-50 border-2 border-green-500' 
                 : 'bg-red-50 border-2 border-red-500'
             }`}>
               {submitStatus === 'success' ? (
-                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+                <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-green-600 flex-shrink-0 mt-0.5" />
               ) : (
-                <XCircle className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5" />
+                <XCircle className="w-5 h-5 sm:w-6 sm:h-6 text-red-600 flex-shrink-0 mt-0.5" />
               )}
-              <div className="flex-1">
-                <h3 className={`font-bold text-lg mb-1 ${
+              <div className="flex-1 min-w-0">
+                <h3 className={`font-bold text-base sm:text-lg mb-1 ${
                   submitStatus === 'success' ? 'text-green-900' : 'text-red-900'
                 }`}>
                   {submitStatus === 'success' ? 'Message Sent!' : 'Error Sending Message'}
                 </h3>
-                <p className={`text-sm ${
+                <p className={`text-xs sm:text-sm ${
                   submitStatus === 'success' ? 'text-green-700' : 'text-red-700'
                 }`}>
                   {submitStatus === 'success' 
@@ -105,7 +105,7 @@ export default function Contact() {
               </div>
               <button
                 onClick={() => setShowNotification(false)}
-                className={`text-2xl leading-none ${
+                className={`text-xl sm:text-2xl leading-none flex-shrink-0 ${
                   submitStatus === 'success' ? 'text-green-600 hover:text-green-800' : 'text-red-600 hover:text-red-800'
                 } transition-colors`}
                 aria-label="Close notification"

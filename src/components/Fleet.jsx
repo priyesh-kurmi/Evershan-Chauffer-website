@@ -2,7 +2,8 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Users, Briefcase } from 'lucide-react'
+import { Users, Briefcase, ChevronLeft, ChevronRight } from 'lucide-react'
+import OptimizedImage from './OptimizedImage'
 
 const fleet = [
   {
@@ -43,6 +44,11 @@ export default function Fleet() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [touchStart, setTouchStart] = useState(null)
+  const [touchEnd, setTouchEnd] = useState(null)
+
+  // Minimum swipe distance (in px)
+  const minSwipeDistance = 50
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % fleet.length)
@@ -50,6 +56,30 @@ export default function Fleet() {
 
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev - 1 + fleet.length) % fleet.length)
+  }
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null)
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+    
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > minSwipeDistance
+    const isRightSwipe = distance < -minSwipeDistance
+    
+    if (isLeftSwipe) {
+      nextSlide()
+    }
+    if (isRightSwipe) {
+      prevSlide()
+    }
   }
 
   return (
@@ -85,14 +115,37 @@ export default function Fleet() {
           className="relative"
         >
           {/* Slider Container */}
-          <div className="bg-white rounded-lg shadow-2xl overflow-hidden max-w-5xl mx-auto">
+          <div 
+            className="bg-white rounded-lg shadow-2xl overflow-hidden max-w-5xl mx-auto relative"
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+          >
+            {/* Left Arrow */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 bg-black/70 hover:bg-black text-white p-2 sm:p-3 rounded-full transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white"
+              aria-label="Previous car"
+            >
+              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+
+            {/* Right Arrow */}
+            <button
+              onClick={nextSlide}
+              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 bg-black/70 hover:bg-black text-white p-2 sm:p-3 rounded-full transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white"
+              aria-label="Next car"
+            >
+              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:h-[400px]">
               {/* Image */}
               <Link 
                 to={fleet[currentIndex].link}
                 className="relative h-64 sm:h-80 lg:h-full overflow-hidden group cursor-pointer"
               >
-                <img
+                <OptimizedImage
                   src={fleet[currentIndex].image}
                   alt={fleet[currentIndex].name}
                   className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
@@ -100,20 +153,20 @@ export default function Fleet() {
                       ? 'object-[center_50%]' 
                       : 'object-center'
                   }`}
+                  loading="eager"
+                  fetchPriority="high"
                 />
                 <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
               </Link>
 
-              {/* Content */}
-              <div className="p-4 sm:p-6 lg:p-8 flex flex-col justify-center">
-                <Link 
-                  to={fleet[currentIndex].link}
-                  className="hover:text-gray-600 transition-colors"
-                >
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-display font-bold mb-3 sm:mb-4">
-                    {fleet[currentIndex].name}
-                  </h3>
-                </Link>
+              {/* Content - Wrapped in Link */}
+              <Link 
+                to={fleet[currentIndex].link}
+                className="p-4 sm:p-6 lg:p-8 flex flex-col justify-center group cursor-pointer"
+              >
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-display font-bold mb-3 sm:mb-4 group-hover:text-gray-600 transition-colors">
+                  {fleet[currentIndex].name}
+                </h3>
                 <p className="text-gray-600 leading-relaxed mb-4 sm:mb-6 text-sm">
                   {fleet[currentIndex].description}
                 </p>
@@ -136,11 +189,12 @@ export default function Fleet() {
                 {/* CTA */}
                 <Link
                   to="/contact"
-                  className="inline-block bg-black text-white px-4 sm:px-6 py-2 sm:py-3 rounded-md text-sm font-semibold outline outline-3 outline-black outline-offset-[-3px] transition-all duration-400 hover:bg-transparent hover:text-black text-center"
+                  onClick={(e) => e.stopPropagation()}
+                  className="inline-block bg-black text-white px-4 sm:px-6 py-2 sm:py-3 rounded-md text-sm font-semibold outline outline-3 outline-black outline-offset-[-3px] transition-all duration-400 hover:bg-transparent hover:text-black text-center w-fit"
                 >
                   BOOK NOW
                 </Link>
-              </div>
+              </Link>
             </div>
           </div>
 
@@ -161,10 +215,11 @@ export default function Fleet() {
                 }`}
                 aria-label={`View ${car.name}`}
               >
-                <img
+                <OptimizedImage
                   src={car.image}
                   alt={car.name}
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
               </Link>
             ))}

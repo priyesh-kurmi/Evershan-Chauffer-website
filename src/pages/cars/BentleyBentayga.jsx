@@ -1,7 +1,16 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import OptimizedImage from '../../components/OptimizedImage'
 
 export default function BentleyBentayga() {
+  const galleryImages = [
+    `${import.meta.env.BASE_URL}images/bentley/bentley1.jpg`,
+    `${import.meta.env.BASE_URL}images/bentley/bentley2.jpg`,
+    `${import.meta.env.BASE_URL}images/bentley/bentley3.png`,
+    `${import.meta.env.BASE_URL}images/bentley/benley4.jpg`,
+    `${import.meta.env.BASE_URL}images/bentley/bentley5.png`
+  ]
+
   return (
     <div className="min-h-screen bg-white pt-24">
       {/* Header Section */}
@@ -37,10 +46,12 @@ export default function BentleyBentayga() {
             className="relative"
           >
             <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl">
-              <img
+              <OptimizedImage
                 src={`${import.meta.env.BASE_URL}images/Bentley Bentayga.png`}
                 alt="Bentley Bentayga"
-                className="w-full h-auto object-cover max-h-[300px] sm:max-h-[400px] md:max-h-none"
+                className="w-full h-auto object-cover max-h-[300px] sm:max-h-[400px] md:max-h-[500px]"
+                loading="eager"
+                fetchPriority="high"
               />
             </div>
           </motion.div>
@@ -121,6 +132,49 @@ export default function BentleyBentayga() {
           </motion.div>
         </div>
         </div>
+
+      {/* Image Gallery Section */}
+      <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-8 sm:mb-12"
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-3 sm:mb-4">
+              Gallery
+            </h2>
+            <p className="text-base sm:text-lg text-gray-600">
+              Explore more views of the Bentley Bentayga
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+            {galleryImages.map((image, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="group relative overflow-hidden rounded-xl sm:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500"
+              >
+                <div className="aspect-video overflow-hidden">
+                  <OptimizedImage
+                    src={image}
+                    alt={`Bentley Bentayga view ${index + 1}`}
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
       </div>
     )
   }

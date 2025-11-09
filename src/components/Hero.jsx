@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[60vh] sm:min-h-[70vh] md:min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20 md:pt-24">
+    <section className="relative min-h-[80vh] sm:min-h-[85vh] md:min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20 md:pt-24">
       {/* Background Image with space on sides and top */}
       <div className="absolute inset-0 flex items-center justify-center bg-white pt-16 sm:pt-20 md:pt-24">
         <div className="relative w-full max-w-7xl h-full mx-auto">
