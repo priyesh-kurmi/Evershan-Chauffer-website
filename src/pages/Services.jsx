@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import OptimizedImage from '../components/OptimizedImage'
 
 const cars = [
   {
@@ -64,10 +65,11 @@ export default function Services() {
               >
                 {/* Image */}
                 <div className="relative w-full aspect-[16/11] bg-gray-100 rounded-3xl overflow-hidden mb-6">
-                  <img 
+                  <OptimizedImage
                     src={car.image} 
                     alt={car.name}
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    loading="lazy"
                   />
                 </div>
                 

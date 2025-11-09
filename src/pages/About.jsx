@@ -58,6 +58,8 @@ export default function About() {
                 src={`${import.meta.env.BASE_URL}images/about1.png`}
                 alt="Professional chauffeur"
                 className="w-full h-auto rounded-lg shadow-2xl"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
           </div>
@@ -74,6 +76,8 @@ export default function About() {
                 src={`${import.meta.env.BASE_URL}images/about2.png`}
                 alt="Luxury fleet"
                 className="w-full h-auto rounded-lg shadow-2xl"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
 

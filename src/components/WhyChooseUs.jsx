@@ -61,7 +61,13 @@ export default function WhyChooseUs() {
             >
               {/* Icon */}
               <div className="flex justify-center mb-6">
-                <img src={feature.icon} alt={feature.title} className="w-16 h-16" />
+                <img 
+                  src={feature.icon} 
+                  alt={feature.title} 
+                  className="w-16 h-16"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
 
               {/* Title */}

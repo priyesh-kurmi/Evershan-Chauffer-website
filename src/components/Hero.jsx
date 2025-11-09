@@ -11,6 +11,9 @@ export default function Hero() {
             src={`${import.meta.env.BASE_URL}images/Gemini_Generated_Image_6i8u1g6i8u1g6i8u.png`}
             alt="Luxury vehicle"
             className="w-full h-full object-cover"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/40" />
         </div>

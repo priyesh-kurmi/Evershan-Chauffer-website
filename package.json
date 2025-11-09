@@ -25,6 +25,8 @@
     "gh-pages": "^6.3.0",
     "postcss": "^8.4.45",
     "tailwindcss": "^3.4.11",
-    "vite": "^5.4.5"
+    "vite": "^5.4.5",
+    "vite-imagetools": "^9.0.0",
+    "vite-plugin-compression": "^0.5.1"
   }
 }
