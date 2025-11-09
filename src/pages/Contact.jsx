@@ -1,6 +1,7 @@
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
-import { Phone, Mail, MapPin, Clock } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock, CheckCircle, XCircle } from 'lucide-react'
+import emailjs from '@emailjs/browser'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -8,6 +9,9 @@ export default function Contact() {
     email: '',
     message: ''
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null)
+  const [showNotification, setShowNotification] = useState(false)
 
   const handleChange = (e) => {
     setFormData({
@@ -16,20 +20,103 @@ export default function Contact() {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
-    alert('Thank you for your inquiry! We will contact you shortly.')
-    setFormData({
-      name: '',
-      email: '',
-      message: ''
-    })
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+
+    try {
+      // EmailJS configuration
+      const serviceId = 'service_eversham'
+      const templateId = 'template_eversham'
+      const publicKey = 'MQu2SFBhm2MMAQ3jw' // This will be replaced after setup
+
+      const templateParams = {
+        to_email: 'kpriyesh1908@gmail.com',
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        reply_to: formData.email
+      }
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey)
+      
+      setSubmitStatus('success')
+      setShowNotification(true)
+      setFormData({
+        name: '',
+        email: '',
+        message: ''
+      })
+      
+      // Auto hide notification after 5 seconds
+      setTimeout(() => {
+        setShowNotification(false)
+      }, 5000)
+    } catch (error) {
+      console.error('Email sending failed:', error)
+      setSubmitStatus('error')
+      setShowNotification(true)
+      
+      // Auto hide notification after 5 seconds
+      setTimeout(() => {
+        setShowNotification(false)
+      }, 5000)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
     <div className="pt-24">
+      {/* Custom Notification */}
+      <AnimatePresence>
+        {showNotification && (
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            transition={{ duration: 0.3 }}
+            className="fixed top-24 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-md px-4"
+          >
+            <div className={`rounded-lg shadow-2xl p-6 flex items-start gap-4 ${
+              submitStatus === 'success' 
+                ? 'bg-green-50 border-2 border-green-500' 
+                : 'bg-red-50 border-2 border-red-500'
+            }`}>
+              {submitStatus === 'success' ? (
+                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+              ) : (
+                <XCircle className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5" />
+              )}
+              <div className="flex-1">
+                <h3 className={`font-bold text-lg mb-1 ${
+                  submitStatus === 'success' ? 'text-green-900' : 'text-red-900'
+                }`}>
+                  {submitStatus === 'success' ? 'Message Sent!' : 'Error Sending Message'}
+                </h3>
+                <p className={`text-sm ${
+                  submitStatus === 'success' ? 'text-green-700' : 'text-red-700'
+                }`}>
+                  {submitStatus === 'success' 
+                    ? 'Thank you for your inquiry! We will contact you shortly.' 
+                    : 'Sorry, there was an error sending your message. Please try calling us directly.'}
+                </p>
+              </div>
+              <button
+                onClick={() => setShowNotification(false)}
+                className={`text-2xl leading-none ${
+                  submitStatus === 'success' ? 'text-green-600 hover:text-green-800' : 'text-red-600 hover:text-red-800'
+                } transition-colors`}
+                aria-label="Close notification"
+              >
+                ×
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Hero Section */}
       <section className="relative py-12 flex items-center justify-center overflow-hidden bg-white">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -77,10 +164,10 @@ export default function Contact() {
                   <div>
                     <h3 className="text-lg font-bold mb-2">Phone</h3>
                     <a
-                      href="tel:+234356435"
+                      href="tel:+4407377712494"
                       className="text-gray-700 hover:text-black transition-colors"
                     >
-                      +23 4356 (435)
+                      07377712494
                     </a>
                   </div>
                 </div>
@@ -93,10 +180,10 @@ export default function Contact() {
                   <div>
                     <h3 className="text-lg font-bold mb-2">Email</h3>
                     <a
-                      href="mailto:office@chauffeurs.com"
+                      href="mailto:bookingevershamchauffers@gmail.com"
                       className="text-gray-700 hover:text-black transition-colors"
                     >
-                      office@chauffeurs.com
+                      bookingevershamchauffers@gmail.com
                     </a>
                   </div>
                 </div>
@@ -109,8 +196,8 @@ export default function Contact() {
                   <div>
                     <h3 className="text-lg font-bold mb-2">Address</h3>
                     <p className="text-gray-700">
-                      2345 Onk Drive<br />
-                      Pittsburgh, New York
+                      35 Broad St Ave<br />
+                      New Broad St, London EC2M 1NH
                     </p>
                   </div>
                 </div>
@@ -183,10 +270,11 @@ export default function Contact() {
                     ></textarea>
                   </div>
                   <button
-                    className="w-full bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition duration-300"
+                    className="w-full bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     type="submit"
+                    disabled={isSubmitting}
                   >
-                    Send Message
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </button>
                 </form>
               </div>

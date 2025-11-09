@@ -5,28 +5,25 @@ import { Star } from 'lucide-react'
 
 const testimonials = [
   {
-    name: 'Alex Johnson',
-    role: 'Founder, Bookhub',
+    name: 'James Smith',
+    role: 'Business Owner',
     rating: 5,
     date: '4 days ago',
-    content: 'The chauffeur was impeccably dressed and treated us like royalty. The luxury limousine was beautifully decorated, adding an extra touch of elegance to our special day. Thank you for making our wedding transportation seamless and memorable!',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80'
+    content: 'The chauffeur was impeccably dressed and treated us like royalty. The luxury limousine was beautifully decorated, adding an extra touch of elegance to our special day. Thank you for making our wedding transportation seamless and memorable!'
   },
   {
-    name: 'Sarah Mitchell',
-    role: 'CEO, TechVision',
+    name: 'Emily Clark',
+    role: 'Manager',
     rating: 5,
     date: '1 week ago',
-    content: 'Outstanding service! The punctuality and professionalism of the chauffeur made my business trip stress-free. The vehicle was immaculate and comfortable. Highly recommend for corporate travel.',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80'
+    content: 'Outstanding service! The punctuality and professionalism of the chauffeur made my business trip stress-free. The vehicle was immaculate and comfortable. Highly recommend for corporate travel.'
   },
   {
-    name: 'Michael Chen',
-    role: 'Director, Global Finance',
+    name: 'Oliver Williams',
+    role: 'Consultant',
     rating: 5,
     date: '2 weeks ago',
-    content: 'Exceptional experience from start to finish. The attention to detail and commitment to customer satisfaction is unmatched. Will definitely use this service again for all my transportation needs.',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80'
+    content: 'Exceptional experience from start to finish. The attention to detail and commitment to customer satisfaction is unmatched. Will definitely use this service again for all my transportation needs.'
   }
 ]
 
@@ -92,16 +89,9 @@ export default function Testimonials() {
             >
               {/* Header */}
               <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-4">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-14 h-14 rounded-full object-cover"
-                  />
-                  <div>
-                    <h4 className="font-bold text-lg">{testimonial.name}</h4>
-                    <p className="text-sm text-gray-600">{testimonial.role}</p>
-                  </div>
+                <div>
+                  <h4 className="font-bold text-lg">{testimonial.name}</h4>
+                  <p className="text-sm text-gray-600">{testimonial.role}</p>
                 </div>
               </div>
 

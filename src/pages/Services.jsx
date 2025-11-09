@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import OptimizedImage from '../components/OptimizedImage'
 
@@ -6,22 +7,26 @@ const cars = [
   {
     name: 'Bentley Bentayga',
     description: 'Elegant choice for your special day',
-    image: `${import.meta.env.BASE_URL}images/Bentley Bentayga.png`
+    image: `${import.meta.env.BASE_URL}images/Bentley Bentayga.png`,
+    link: '/cars/bentley-bentayga'
   },
   {
     name: 'Rolls-Royce Phantom',
     description: 'An iconic car for luxury travel',
-    image: `${import.meta.env.BASE_URL}images/Rolls-Royce Phantom.png`
+    image: `${import.meta.env.BASE_URL}images/Rolls-Royce Phantom.png`,
+    link: '/cars/rolls-royce-phantom'
   },
   {
     name: 'Rolls-Royce Ghost',
     description: 'A world of boundless potential',
-    image: `${import.meta.env.BASE_URL}images/Rolls-Royce Ghost.png`
+    image: `${import.meta.env.BASE_URL}images/Rolls-Royce Ghost.png`,
+    link: '/cars/rolls-royce-ghost'
   },
   {
     name: 'Range Rover',
     description: 'The original luxury SUV',
-    image: `${import.meta.env.BASE_URL}images/Range Rover.png`
+    image: `${import.meta.env.BASE_URL}images/Range Rover.png`,
+    link: '/cars/range-rover'
   }
 ]
 
@@ -61,37 +66,38 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="group cursor-pointer"
               >
-                {/* Image */}
-                <div className="relative w-full aspect-[16/11] bg-gray-100 rounded-3xl overflow-hidden mb-6">
-                  <OptimizedImage
-                    src={car.image} 
-                    alt={car.name}
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                    loading="lazy"
-                  />
-                </div>
-                
-                {/* Car Info */}
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h3 className="text-2xl md:text-3xl font-display font-bold text-black mb-2 relative inline-block">
-                      <span className="relative">
-                        {car.name}
-                        <span className="absolute bottom-0 left-0 w-full h-0.5 bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                      </span>
-                    </h3>
-                    <p className="text-base text-gray-600">
-                      {car.description}
-                    </p>
+                <Link to={car.link} className="group cursor-pointer block">
+                  {/* Image */}
+                  <div className="relative w-full aspect-[16/11] bg-gray-100 rounded-3xl overflow-hidden mb-6">
+                    <OptimizedImage
+                      src={car.image} 
+                      alt={car.name}
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                      loading="lazy"
+                    />
                   </div>
                   
-                  {/* Arrow Icon */}
-                  <div className="flex-shrink-0 ml-4 transition-transform duration-300 group-hover:translate-x-2">
-                    <ArrowRight className="w-6 h-6 text-black" strokeWidth={2} />
+                  {/* Car Info */}
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-display font-bold text-black mb-2 relative inline-block">
+                        <span className="relative">
+                          {car.name}
+                          <span className="absolute bottom-0 left-0 w-full h-0.5 bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                        </span>
+                      </h3>
+                      <p className="text-base text-gray-600">
+                        {car.description}
+                      </p>
+                    </div>
+                    
+                    {/* Arrow Icon */}
+                    <div className="flex-shrink-0 ml-4 transition-transform duration-300 group-hover:translate-x-2">
+                      <ArrowRight className="w-6 h-6 text-black" strokeWidth={2} />
+                    </div>
                   </div>
-                </div>
+                </Link>
               </motion.div>
             ))}
           </div>

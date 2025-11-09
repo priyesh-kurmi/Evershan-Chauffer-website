@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import viteCompression from 'vite-plugin-compression'
 import { imagetools } from 'vite-imagetools'
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [
     react(),
     imagetools({
@@ -21,7 +21,7 @@ export default defineConfig({
       deleteOriginFile: false
     })
   ],
-  base: '/Evershan-Chauffer-website/',
+  base: command === 'build' ? '/Evershan-Chauffer-website/' : '/',
   server: {
     port: 3000,
     open: true
@@ -44,4 +44,4 @@ export default defineConfig({
       }
     }
   }
-})
+}))

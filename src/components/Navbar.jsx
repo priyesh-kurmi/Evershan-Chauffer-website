@@ -41,8 +41,13 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-24">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <div className="flex flex-col items-center leading-none" style={{ fontFamily: 'League Spartan, sans-serif' }}>
+          <Link
+            to="/"
+            className="flex items-center gap-2 select-none cursor-pointer"
+            style={{ fontFamily: 'League Spartan, sans-serif', userSelect: 'none' }}
+            aria-label="Eversham Chauffeur logo - Go to home page"
+          >
+            <div className="flex flex-col items-center leading-none">
               <span className="text-2xl font-bold tracking-wider">EVERSHAM</span>
               <span className="text-2xl font-bold tracking-wider -mt-1">CHAUFFEUR</span>
             </div>
@@ -78,8 +83,16 @@ export default function Navbar() {
 
           {/* CTA Button - Right */}
           <div className="hidden md:block">
-            <Link to="/contact" className="bg-black text-white px-6 py-2.5 rounded-md hover:bg-gray-800 transition-colors">
-              Request Quote
+            <Link 
+              to="/contact" 
+              className="flex justify-center items-center px-6 py-3 gap-4 bg-black outline outline-3 outline-black outline-offset-[-3px] rounded-md border-none cursor-pointer transition-all duration-400 hover:bg-transparent group"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="transition-all duration-400">
+                <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="white" className="transition-all duration-400 group-hover:fill-black"/>
+              </svg>
+              <span className="text-white font-bold text-base transition-all duration-400 group-hover:text-black">
+                Request Quote
+              </span>
             </Link>
           </div>
 

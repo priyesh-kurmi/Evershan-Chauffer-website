@@ -2,29 +2,40 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Users, Briefcase, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Users, Briefcase } from 'lucide-react'
 
 const fleet = [
   {
-    name: 'Rolls Royce Cullinan',
-    description: 'The Rolls Royce Cullinan Black Badge is a luxury car that can seat up to five passengers and deliver up to 265 horsepower. It offers a turbocharged four-cylinder engine, providing unparalleled comfort.',
+    name: 'Bentley Bentayga',
+    description: 'The ultimate luxury SUV, combining handcrafted British excellence with commanding performance. Features diamond-quilted leather seats and adaptive air suspension.',
+    passengers: 5,
+    luggage: 7,
+    image: `${import.meta.env.BASE_URL}images/Bentley Bentayga.png`,
+    link: '/cars/bentley-bentayga'
+  },
+  {
+    name: 'Rolls-Royce Phantom',
+    description: 'The pinnacle of automotive luxury with signature "Magic Carpet Ride" suspension, starlight headliner, and bespoke interior craftsmanship.',
+    passengers: 5,
+    luggage: 6,
+    image: `${import.meta.env.BASE_URL}images/Rolls-Royce Phantom.png`,
+    link: '/cars/rolls-royce-phantom'
+  },
+  {
+    name: 'Rolls-Royce Ghost',
+    description: 'A contemporary interpretation of luxury with illuminated fascia, advanced driver assistance, and the iconic Spirit of Ecstasy.',
+    passengers: 5,
+    luggage: 5,
+    image: `${import.meta.env.BASE_URL}images/Rolls-Royce Ghost.png`,
+    link: '/cars/rolls-royce-ghost'
+  },
+  {
+    name: 'Range Rover',
+    description: 'Luxury SUV capability with sophisticated British design. Features Terrain Response 2, air suspension, and executive-class seating.',
     passengers: 5,
     luggage: 8,
-    image: 'https://framerusercontent.com/images/KJKwhTQSBi2ZBCLGiuDe0H0tfVQ.png?scale-down-to=1024'
-  },
-  {
-    name: 'Mercedes-Benz S-Class',
-    description: 'The Mercedes-Benz S-Class represents the pinnacle of luxury sedans, offering cutting-edge technology, supreme comfort, and sophisticated styling for the discerning traveler.',
-    passengers: 4,
-    luggage: 6,
-    image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1024&q=80'
-  },
-  {
-    name: 'BMW 7 Series',
-    description: 'The BMW 7 Series combines dynamic performance with luxurious comfort, featuring advanced driver assistance systems and premium materials throughout.',
-    passengers: 4,
-    luggage: 5,
-    image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=1024&q=80'
+    image: `${import.meta.env.BASE_URL}images/Range Rover.png`,
+    link: '/cars/range-rover'
   }
 ]
 
@@ -42,7 +53,7 @@ export default function Fleet() {
   }
 
   return (
-    <section className="py-24 bg-white" ref={ref}>
+    <section className="py-12 sm:py-16 md:py-24 bg-gray-50" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Label */}
         <motion.div
@@ -61,7 +72,7 @@ export default function Fleet() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-center mb-20"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-center mb-12 sm:mb-16 md:mb-20"
         >
           Book Luxury Fleet
         </motion.h2>
@@ -74,37 +85,50 @@ export default function Fleet() {
           className="relative"
         >
           {/* Slider Container */}
-          <div className="bg-white rounded-lg shadow-2xl overflow-hidden">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+          <div className="bg-white rounded-lg shadow-2xl overflow-hidden max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:h-[400px]">
               {/* Image */}
-              <div className="relative h-96 lg:h-auto">
+              <Link 
+                to={fleet[currentIndex].link}
+                className="relative h-64 sm:h-80 lg:h-full overflow-hidden group cursor-pointer"
+              >
                 <img
                   src={fleet[currentIndex].image}
                   alt={fleet[currentIndex].name}
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
+                    fleet[currentIndex].name === 'Range Rover' 
+                      ? 'object-[center_50%]' 
+                      : 'object-center'
+                  }`}
                 />
-              </div>
+                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
+              </Link>
 
               {/* Content */}
-              <div className="p-8 lg:p-12 flex flex-col justify-center">
-                <h3 className="text-3xl lg:text-4xl font-display font-bold mb-6">
-                  {fleet[currentIndex].name}
-                </h3>
-                <p className="text-gray-600 leading-relaxed mb-8">
+              <div className="p-4 sm:p-6 lg:p-8 flex flex-col justify-center">
+                <Link 
+                  to={fleet[currentIndex].link}
+                  className="hover:text-gray-600 transition-colors"
+                >
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-display font-bold mb-3 sm:mb-4">
+                    {fleet[currentIndex].name}
+                  </h3>
+                </Link>
+                <p className="text-gray-600 leading-relaxed mb-4 sm:mb-6 text-sm">
                   {fleet[currentIndex].description}
                 </p>
 
-                {/* Specifications */}
-                <div className="mb-8">
-                  <p className="text-sm font-semibold mb-4">Specification:</p>
-                  <div className="flex gap-8">
+                {/* Capacity */}
+                <div className="mb-4 sm:mb-6">
+                  <p className="text-xs font-semibold mb-3 uppercase tracking-wide text-gray-500">Capacity</p>
+                  <div className="flex flex-wrap gap-4 sm:gap-6">
                     <div className="flex items-center gap-2">
-                      <Users className="w-5 h-5 text-gray-600" />
-                      <span className="text-gray-700">{fleet[currentIndex].passengers} Passengers</span>
+                      <Users className="w-4 h-4 text-gray-600" />
+                      <span className="text-sm text-gray-700">{fleet[currentIndex].passengers} Passengers</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Briefcase className="w-5 h-5 text-gray-600" />
-                      <span className="text-gray-700">{fleet[currentIndex].luggage} Luggage's</span>
+                      <Briefcase className="w-4 h-4 text-gray-600" />
+                      <span className="text-sm text-gray-700">{fleet[currentIndex].luggage} Luggage</span>
                     </div>
                   </div>
                 </div>
@@ -112,7 +136,7 @@ export default function Fleet() {
                 {/* CTA */}
                 <Link
                   to="/contact"
-                  className="inline-block bg-black text-white px-8 py-4 rounded-md font-semibold hover:bg-gray-800 transition-all transform hover:scale-105 text-center"
+                  className="inline-block bg-black text-white px-4 sm:px-6 py-2 sm:py-3 rounded-md text-sm font-semibold outline outline-3 outline-black outline-offset-[-3px] transition-all duration-400 hover:bg-transparent hover:text-black text-center"
                 >
                   BOOK NOW
                 </Link>
@@ -120,35 +144,29 @@ export default function Fleet() {
             </div>
           </div>
 
-          {/* Navigation Buttons */}
-          <div className="flex justify-center gap-4 mt-8">
-            <button
-              onClick={prevSlide}
-              className="p-3 rounded-full bg-white shadow-lg hover:bg-gray-100 transition-colors"
-              aria-label="Previous"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            <button
-              onClick={nextSlide}
-              className="p-3 rounded-full bg-white shadow-lg hover:bg-gray-100 transition-colors"
-              aria-label="Next"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
-          </div>
-
-          {/* Dots Indicator */}
-          <div className="flex justify-center gap-2 mt-4">
-            {fleet.map((_, index) => (
-              <button
+          {/* Thumbnail Navigation */}
+          <div className="flex justify-center gap-2 sm:gap-4 mt-6 sm:mt-8 px-4">
+            {fleet.map((car, index) => (
+              <Link
                 key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  index === currentIndex ? 'bg-black w-8' : 'bg-gray-300'
+                to={car.link}
+                onClick={(e) => {
+                  e.preventDefault()
+                  setCurrentIndex(index)
+                }}
+                className={`relative w-16 h-12 sm:w-24 sm:h-16 rounded-lg overflow-hidden transition-all duration-300 ${
+                  index === currentIndex 
+                    ? 'ring-2 sm:ring-4 ring-black scale-105' 
+                    : 'ring-1 sm:ring-2 ring-gray-300 hover:ring-gray-400 opacity-70 hover:opacity-100'
                 }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
+                aria-label={`View ${car.name}`}
+              >
+                <img
+                  src={car.image}
+                  alt={car.name}
+                  className="w-full h-full object-cover"
+                />
+              </Link>
             ))}
           </div>
         </motion.div>
