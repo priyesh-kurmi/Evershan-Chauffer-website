@@ -6,7 +6,7 @@ import './index.css' // Main styles
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/Evershan-Chauffer-website">
       <App />
     </BrowserRouter>
   </React.StrictMode>,
