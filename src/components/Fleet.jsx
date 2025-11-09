@@ -200,9 +200,6 @@ export default function Fleet() {
 
           {/* Thumbnail Navigation */}
           <div className="mt-6 sm:mt-8">
-            <p className="text-center text-gray-500 text-base sm:text-lg font-medium mb-3 sm:mb-4">
-              CHOOSE YOUR CAR
-            </p>
             <div className="flex justify-center gap-2 sm:gap-4 px-4">
               {fleet.map((car, index) => (
                 <Link
@@ -228,6 +225,9 @@ export default function Fleet() {
                 </Link>
               ))}
             </div>
+            <p className="text-center text-gray-500 text-base sm:text-lg font-medium mt-5">
+              CHOOSE YOUR CAR
+            </p>
           </div>
         </motion.div>
       </div>
