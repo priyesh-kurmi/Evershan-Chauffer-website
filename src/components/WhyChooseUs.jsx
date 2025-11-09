@@ -6,7 +6,7 @@ const features = [
   {
     title: 'Comfort and Luxury',
     description: 'Clients enjoy luxurious high-end vehicles equipped with premium amenities.',
-    icon: '/images/iVxzMdIU1aM7OZfjO0LVnuLjct4.png'
+    icon: `${import.meta.env.BASE_URL}images/iVxzMdIU1aM7OZfjO0LVnuLjct4.png`
   },
   {
     title: 'Safety and Security',

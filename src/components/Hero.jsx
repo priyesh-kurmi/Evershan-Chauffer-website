@@ -8,7 +8,7 @@ export default function Hero() {
       <div className="absolute inset-0 flex items-center justify-center bg-white pt-24">
         <div className="relative w-full max-w-7xl h-full mx-auto">
           <img
-            src="/images/Gemini_Generated_Image_6i8u1g6i8u1g6i8u.png"
+            src={`${import.meta.env.BASE_URL}images/Gemini_Generated_Image_6i8u1g6i8u1g6i8u.png`}
             alt="Luxury vehicle"
             className="w-full h-full object-cover"
           />

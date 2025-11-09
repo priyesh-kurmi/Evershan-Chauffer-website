@@ -55,7 +55,7 @@ export default function About() {
               transition={{ duration: 0.8 }}
             >
               <img
-                src="/images/about1.png"
+                src={`${import.meta.env.BASE_URL}images/about1.png`}
                 alt="Professional chauffeur"
                 className="w-full h-auto rounded-lg shadow-2xl"
               />
@@ -71,7 +71,7 @@ export default function About() {
               className="order-2 lg:order-1"
             >
               <img
-                src="/images/about2.png"
+                src={`${import.meta.env.BASE_URL}images/about2.png`}
                 alt="Luxury fleet"
                 className="w-full h-auto rounded-lg shadow-2xl"
               />

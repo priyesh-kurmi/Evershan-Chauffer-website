@@ -5,22 +5,22 @@ const cars = [
   {
     name: 'Bentley Bentayga',
     description: 'Elegant choice for your special day',
-    image: '/images/Bentley Bentayga.png'
+    image: `${import.meta.env.BASE_URL}images/Bentley Bentayga.png`
   },
   {
     name: 'Rolls-Royce Phantom',
     description: 'An iconic car for luxury travel',
-    image: '/images/Rolls-Royce Phantom.png'
+    image: `${import.meta.env.BASE_URL}images/Rolls-Royce Phantom.png`
   },
   {
     name: 'Rolls-Royce Ghost',
     description: 'A world of boundless potential',
-    image: '/images/Rolls-Royce Ghost.png'
+    image: `${import.meta.env.BASE_URL}images/Rolls-Royce Ghost.png`
   },
   {
     name: 'Range Rover',
     description: 'The original luxury SUV',
-    image: '/images/Range Rover.png'
+    image: `${import.meta.env.BASE_URL}images/Range Rover.png`
   }
 ]
 
