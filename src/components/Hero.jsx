@@ -8,7 +8,7 @@ export default function Hero() {
       <div className="absolute inset-0 flex items-center justify-center bg-white pt-16 sm:pt-20 md:pt-24">
         <div className="relative w-full max-w-7xl h-full mx-auto">
           <img
-            src={`${import.meta.env.BASE_URL}images/Gemini_Generated_Image_6i8u1g6i8u1g6i8u.png`}
+            src={`${import.meta.env.BASE_URL}images/about2.png`}
             alt="Luxury vehicle"
             className="w-full h-full object-cover object-center"
             loading="eager"
@@ -27,11 +27,10 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-white mb-4 sm:mb-6 leading-tight px-2">
-            Executive Chauffeur Services<br className="hidden sm:block" /><span className="sm:hidden"> </span>for Business & Leisure
+            Elite Bespoke Chauffeur & Wedding Car Hire Service
           </h1>
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 mb-8 sm:mb-12 max-w-3xl mx-auto px-4">
-            Enjoy the finest chauffeur services with our team of experienced drivers,
-            committed to delivering exceptional service and reliability.
+            Delivered with precision, discretion, and quiet excellence.
           </p>
           <Link
             to="/contact"
@@ -43,7 +42,7 @@ export default function Hero() {
             
             {/* Text */}
             <span className="relative z-10 text-black group-hover:text-white transition-colors duration-700">
-              REQUEST QUOTE
+              BOOK NOW
             </span>
             
             {/* Shimmer effect on hover */}

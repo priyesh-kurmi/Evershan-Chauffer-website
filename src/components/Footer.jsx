@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-20 md:gap-x-20">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <h3 className="text-3xl font-display font-bold mb-8 tracking-wider" style={{ fontFamily: "'League Spartan', sans-serif" }}>
+            <h3 className="text-3xl font-display font-bold mb-8 tracking-wider">
               EVERSHAM
             </h3>
             <p className="text-gray-600 text-base leading-relaxed mb-8">
@@ -20,7 +20,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-sm font-bold mb-8 tracking-widest text-gray-900 uppercase" style={{ fontFamily: "'League Spartan', sans-serif" }}>Quick Links</h4>
+            <h4 className="text-sm font-bold mb-8 tracking-widest text-gray-900 uppercase">Quick Links</h4>
             <ul className="space-y-5">
               <li>
                 <Link to="/about" className="text-gray-600 hover:text-black transition-colors text-base group relative inline-block">
@@ -59,7 +59,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-sm font-bold mb-8 tracking-widest text-gray-900 uppercase" style={{ fontFamily: "'League Spartan', sans-serif" }}>Get in Touch</h4>
+            <h4 className="text-sm font-bold mb-8 tracking-widest text-gray-900 uppercase">Get in Touch</h4>
             <ul className="space-y-6">
               <li className="flex items-start text-gray-600 group">
                 <Phone size={18} className="mr-3 mt-0.5 flex-shrink-0 text-gray-900" />
@@ -84,7 +84,7 @@ export default function Footer() {
 
           {/* Social & Newsletter */}
           <div>
-            <h4 className="text-sm font-bold mb-8 tracking-widest text-gray-900 uppercase" style={{ fontFamily: "'League Spartan', sans-serif" }}>Connect With Us</h4>
+            <h4 className="text-sm font-bold mb-8 tracking-widest text-gray-900 uppercase">Connect With Us</h4>
             <div className="flex space-x-5 mb-10">
               <a
                 href="https://facebook.com/evershamchauffers"

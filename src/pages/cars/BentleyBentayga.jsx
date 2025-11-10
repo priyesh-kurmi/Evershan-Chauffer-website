@@ -65,15 +65,23 @@ export default function BentleyBentayga() {
           >
             <div>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-display font-bold mb-4 sm:mb-6">
-                Choose this iconic car for your next event, available with our chauffeuring service
+                Select an iconic vehicle for your occasion — available with our discreet, professional chauffeur service.
               </h2>
 
               <div className="space-y-4 sm:space-y-6">
-                {/* Corporate Events */}
+                {/* Corporate Event Hire */}
                 <div>
-                  <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">Corporate Events</h3>
+                  <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">Corporate Event Hire</h3>
                   <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                    Elevate your business image with our premium cars
+                    Select an iconic vehicle for your occasion — available with our discreet, professional chauffeur service.
+                  </p>
+                </div>
+
+                {/* Corporate Travel */}
+                <div>
+                  <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">Corporate Travel</h3>
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                    Make a lasting impression with executive-level vehicles that reflect confidence and prestige.
                   </p>
                 </div>
 
@@ -81,15 +89,15 @@ export default function BentleyBentayga() {
                 <div>
                   <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">Weddings</h3>
                   <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                    Make your wedding unforgettable with our stunning luxury cars
+                    Arrive in timeless style. Our luxury fleet ensures your day is as memorable as the moment itself.
                   </p>
                 </div>
 
-                {/* Special Events */}
+                {/* Special Occasions */}
                 <div>
-                  <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">Special Events</h3>
+                  <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">Special Occasions</h3>
                   <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                    Choose from our luxury vehicles for your next special event
+                    Choose from our curated selection of prestige vehicles to elevate your celebration or event.
                   </p>
                 </div>
 
@@ -97,15 +105,15 @@ export default function BentleyBentayga() {
                 <div>
                   <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">Airport Transfers</h3>
                   <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                    Travel is style with our chauffeured service to or from airports
+                    Travel in comfort and silence with seamless door-to-door chauffeured airport transfers.
                   </p>
                 </div>
 
-                {/* Photo/Video Shoots */}
+                {/* Photo & Film Hire */}
                 <div>
-                  <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">Photo/Video Shoots</h3>
+                  <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">Photo & Film Hire</h3>
                   <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                    Elevate your photo or video production with our stunning cars
+                    Enhance your production with striking, high-end vehicles that command attention on camera.
                   </p>
                 </div>
               </div>

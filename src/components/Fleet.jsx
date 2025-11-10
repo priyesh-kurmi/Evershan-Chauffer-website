@@ -190,7 +190,7 @@ export default function Fleet() {
                 <Link
                   to="/contact"
                   onClick={(e) => e.stopPropagation()}
-                  className="inline-block bg-black text-white px-4 sm:px-6 py-2 sm:py-3 rounded-md text-sm font-semibold outline outline-3 outline-black outline-offset-[-3px] transition-all duration-400 hover:bg-transparent hover:text-black text-center w-fit"
+                  className="inline-block bg-black text-white px-4 sm:px-6 py-2 sm:py-3 rounded-md text-sm font-semibold outline outline-3 outline-black outline-offset-[-3px] transition-all duration-400 hover:bg-transparent hover:text-black text-center w-full sm:w-fit"
                 >
                   BOOK NOW
                 </Link>

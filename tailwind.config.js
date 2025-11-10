@@ -13,8 +13,8 @@ export default {
         'gold-light': '#f4e4b7',
       },
       fontFamily: {
-        'display': ['Playfair Display', 'serif'],
-        'sans': ['Inter', 'sans-serif'],
+        'display': ['League Spartan', 'sans-serif'],
+        'sans': ['League Spartan', 'sans-serif'],
       },
     },
   },

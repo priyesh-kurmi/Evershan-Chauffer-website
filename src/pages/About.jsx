@@ -73,7 +73,7 @@ export default function About() {
               className="order-2 lg:order-1"
             >
               <OptimizedImage
-                src={`${import.meta.env.BASE_URL}images/about2.png`}
+                src={`${import.meta.env.BASE_URL}images/Gemini_Generated_Image_6i8u1g6i8u1g6i8u.png`}
                 alt="Luxury fleet"
                 className="w-full h-auto rounded-lg shadow-2xl"
                 loading="lazy"
@@ -142,7 +142,7 @@ export default function About() {
             ))}
           </div>
 
-          <div className="flex justify-center gap-12 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-1 md:flex md:justify-center gap-12 mt-12">
             {[
               {
                 title: 'Loyalty',
@@ -159,7 +159,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: (index + 3) * 0.1 }}
-                className="group bg-white p-10 border border-gray-200 hover:border-black transition-all duration-300 hover:shadow-xl w-full md:w-[calc((100%-3rem)/3)]"
+                className="group bg-white p-10 border border-gray-200 hover:border-black transition-all duration-300 hover:shadow-xl md:w-[calc((100%-3rem)/3)]"
               >
                 <h3 className="text-2xl font-display font-bold mb-6 text-black">{value.title}</h3>
                 <div className="w-12 h-0.5 bg-black mb-6" />
