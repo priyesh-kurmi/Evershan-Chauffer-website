@@ -104,7 +104,7 @@ export default function Fleet() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-center mb-12 sm:mb-16 md:mb-20"
         >
-          Book Luxury Fleet
+          Select Your Car
         </motion.h2>
 
         {/* Slider */}
