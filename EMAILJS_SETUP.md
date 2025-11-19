@@ -10,8 +10,8 @@
 2. Click "Add New Service"
 3. Choose your email provider (Gmail recommended)
 4. For Gmail:
-   - Service ID: Use `service_eversham` (or your custom name)
-   - Connect your Gmail account: kpriyesh1908@gmail.com
+   - Service ID: Use `service_mngju08`
+   - Connect your Gmail account: bookingevershamchauffers@gmail.com
    - Click "Create Service"
 
 ## Step 3: Create Email Template
@@ -39,7 +39,7 @@ Message:
 Reply directly to: {{reply_to}}
 ```
 
-5. Set "To Email" to: kpriyesh1908@gmail.com
+5. Set "To Email" to: bookingevershamchauffers@gmail.com
 6. Click "Save"
 
 ## Step 4: Get Your Public Key
@@ -50,16 +50,16 @@ Reply directly to: {{reply_to}}
 Open `src/pages/Contact.jsx` and replace these values on lines 21-23:
 
 ```javascript
-const serviceId = 'service_eversham'  // Replace with your Service ID from Step 2
-const templateId = 'template_eversham'  // Replace with your Template ID from Step 3
-const publicKey = 'YOUR_PUBLIC_KEY'  // Replace with your Public Key from Step 4
+const serviceId = 'service_mngju08'  // Your Service ID from Step 2
+const templateId = 'template_eversham'  // Your Template ID from Step 3
+const publicKey = 'BaD7eViGWoKgNloJF'  // Your Public Key from Step 4
 ```
 
 ## Step 6: Test the Form
 1. Make sure your dev server is running: `npm run dev`
 2. Go to the Contact page
 3. Fill out the form and submit
-4. Check kpriyesh1908@gmail.com for the email
+4. Check bookingevershamchauffers@gmail.com for the email
 
 ## Troubleshooting
 - If emails aren't sending, check the browser console for errors

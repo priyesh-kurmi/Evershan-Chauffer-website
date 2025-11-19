@@ -27,12 +27,12 @@ export default function Contact() {
 
     try {
       // EmailJS configuration
-      const serviceId = 'service_eversham'
+      const serviceId = 'service_mngju08'
       const templateId = 'template_eversham'
-      const publicKey = 'MQu2SFBhm2MMAQ3jw' // This will be replaced after setup
+      const publicKey = 'BaD7eViGWoKgNloJF'
 
       const templateParams = {
-        to_email: 'kpriyesh1908@gmail.com',
+        to_email: 'bookingevershamchauffers@gmail.com',
         from_name: formData.name,
         from_email: formData.email,
         message: formData.message,
@@ -77,7 +77,7 @@ export default function Contact() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -50 }}
             transition={{ duration: 0.3 }}
-            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-[90%] sm:w-full max-w-md px-4"
+            className="fixed top-4 sm:top-6 left-1/2 transform -translate-x-1/2 z-50 w-[90%] sm:w-auto sm:min-w-[400px] sm:max-w-md px-4"
           >
             <div className={`rounded-lg shadow-2xl p-4 sm:p-6 flex items-start gap-3 sm:gap-4 ${
               submitStatus === 'success' 
