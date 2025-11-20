@@ -21,7 +21,7 @@ export default defineConfig(({ command }) => ({
       deleteOriginFile: false
     })
   ],
-  base: command === 'build' ? '/Evershan-Chauffer-website/' : '/',
+  base: '/',
   server: {
     port: 3000,
     open: true
